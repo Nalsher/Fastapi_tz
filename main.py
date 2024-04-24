@@ -29,13 +29,6 @@ class Get_ord(BaseModel):
 app = FastAPI()
 
 
-@app.get('/')
-async def func():
-    async with engine.connect() as conn:
-        send = await conn.execute(text(f"""SELECT * FROM o"""))
-        return {'True':'True'}
-
-
 @app.get('/courier',response_model=List[CourierList])
 async def get_courier_list():
     get = await Coruier_crud.get()
